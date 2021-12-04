@@ -1,0 +1,34 @@
+{
+  "name": "data-manager-platform",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "test": "node-dev ./bin/www --notify=false",
+    "start": "pm2 start ./bin/www --name nServer --watch",
+    "api": "node ./plug-in/swagger"
+  },
+  "dependencies": {
+    "body-parser": "~1.19.0",
+    "cookie-parser": "~1.4.3",
+    "crypto": "^1.0.1",
+    "debug": "~4.3.2",
+    "express": "~4.16.3",
+    "jsencrypt": "^3.0.0-rc.1",
+    "morgan": "~1.10.0",
+    "mysql": "^2.16.0",
+    "redis": "^3.1.2",
+    "serve-favicon": "~2.5.0",
+    "swagger-jsdoc": "^6.1.0",
+    "ws": "^7.5.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.31.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-prettier": "^3.4.0",
+    "node-dev": "^7.0.0",
+    "prettier": "^2.3.2",
+    "prettier-eslint": "^13.0.0"
+  }
+}

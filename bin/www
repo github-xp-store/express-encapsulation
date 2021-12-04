@@ -1,0 +1,36 @@
+#!/usr/bin/env node
+const http = require('http');
+const WebSocket = require('ws');
+const debug = require('debug')('apiserver:server');
+
+const app = require('../app');
+const config = require('../serverconfig');
+const utils = require('./utils');
+
+// Get port from environment and store in Express.
+
+// var hostname ='172.17.72.16';
+const hostname = config.HOSTNAME || '';
+const port = config.PORT || utils.normalizePort(process.env.PORT, '3000');
+
+app.set('port', port);
+
+// Create HTTP server.
+const server = http.createServer(app);
+
+// Listen on provided port, on all network interfaces.
+server.listen(port, hostname);
+
+server.on('error', utils.onError(port));
+server.on('listening', utils.onListening(server, debug));
+
+// Create WebSocket Server
+const wss = new WebSocket.Server({ server });
+wss.on('connection', (ws) => {
+  ws.on('message', (data) => {
+    // 把消息发送到所有的客户端 wss.clients获取所有链接的客户端
+    wss.clients.forEach((client) => {
+      client.send(data);
+    });
+  });
+});

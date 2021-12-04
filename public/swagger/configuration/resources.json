@@ -1,0 +1,8 @@
+[
+  {
+    "name": "default",
+    "url": "/swagger-doc.json",
+    "swaggerVersion": "2.0",
+    "location": "/swagger-doc.json"
+  }
+]
